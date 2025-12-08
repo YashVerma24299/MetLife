@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Ahganirya";
+  src: url("./assets/fonts/Ahganirya.otf") format("opentype");
+}
+@font-face {
+  font-family: "Nexa-ExtraLight";
+  src: url("./assets/fonts/Nexa-ExtraLight.otf") format("opentype");
+}
+@font-face {
+  font-family: "Nexa-Heavy";
+  src: url("./assets/fonts/Nexa-Heavy.otf") format("opentype");
+}
+
+.ahganirya {
+  font-family: "Ahganirya";
+  font-weight: 300;
+}
+.nexa-light {
+  font-family: "Nexa-ExtraLight";
+}
+.nexa-heavy {
+  font-family: "Nexa-Heavy";
+}
+.fit{
+  white-space: nowrap;
+}
+
+.yash{
+  height: calc(100vh-300px) !important;
+  overflow: auto;
+}
+
