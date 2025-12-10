@@ -4,6 +4,7 @@ import recycle from '../../assets/images/recycle.png'
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Modal from "../../components/Modal/Modal";
+import Button from "../../components/Button/Button";
 
 export default function YourScript() {
 
@@ -31,10 +32,10 @@ export default function YourScript() {
         row[1],
         row[2],
         row[3],
-        <div className="flex justify-center gap-2">
+        <div className="flex gap-2">
             <img
                 src={copy}
-                className="w-4 cursor-pointer"
+                className="w-5 cursor-pointer"
                 onClick={() => {
                     setSelectedIndex(index);
                     setEditData({
@@ -47,7 +48,7 @@ export default function YourScript() {
             />
             <img
                 src={recycle}
-                className="w-4 cursor-pointer"
+                className="w-5 cursor-pointer"
                 onClick={() => setFeedBack(true)}
             />
         </div>,
@@ -69,8 +70,8 @@ export default function YourScript() {
                 <div className="flex justify-between">
                     <p className="text-2xl font-semibold text-gray-600">Your Script</p>
                     <div className="flex gap-5">
-                        <button className="rounded-sm shadow-sm text-sm text-blue-500 px-4 py-2 bg-white border border-blue-500"> + Add Scene</button>
-                        <button className="rounded-sm text-sm text-white px-4 py-2 bg-blue-500"> Show Source</button>
+                        <Button text='+ Add Scene' textColor="text-blue-500" bg="bg-white" padding="px-4 py-2" border="border border-blue-500"/>
+                        <Button text='Show Source' bg="bg-blue-500" textColor="text-white" padding="px-4 py-2"/>
                     </div>
                 </div>
 
@@ -78,8 +79,8 @@ export default function YourScript() {
 
                 <div className="flex justify-end">
                     <div className="flex gap-5">
-                        <button className="rounded-sm shadow-sm text-sm text-blue-500 px-4 py-2 bg-white border border-blue-500"> Regenerate Script</button>
-                        <button className="rounded-sm shadow-sm text-sm text-white px-4 py-2 bg-[#99D538]"> Download Script</button>
+                        <button className="cursor-not-allowed rounded-sm shadow-sm text-sm text-blue-500 px-4 py-2 bg-white border border-blue-500"> Regenerate Script</button>
+                        <button className="cursor-not-allowed rounded-sm shadow-sm text-sm text-white px-4 py-2 bg-[#99D538]"> Download Script</button>
                         <button
                             className="rounded-sm text-sm text-white px-4 py-2 bg-blue-500 cursor-pointer hover:bg-blue-600"
                             onClick={() => navigate('visuals')}

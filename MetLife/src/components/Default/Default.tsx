@@ -1,6 +1,6 @@
 export default function Default({title}:{title: string}) {
   return (
-    <div className="">
+    <div className="p-4">
       <div className="bg-white rounded-lg shadow-sm p-10 flex flex-col items-center justify-center ">
         <h2 className="text-2xl font-semibold text-gray-800 mb-2">
           Page Coming Soon for {title}

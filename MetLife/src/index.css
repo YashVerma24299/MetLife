@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+:root{
+  font-family:system-ui, 'Helvetica', sans-serif;
+}
+
 @font-face {
   font-family: "Ahganirya";
   src: url("./assets/fonts/Ahganirya.otf") format("opentype");

@@ -2,10 +2,15 @@ import { useState } from "react";
 import Selection from "../../components/AnimationSelection/Selection";
 import Button from "../../components/Button/Button";
 import GenerateScriptSection from "../../components/GenerateScriptSection/GenerateScriptSection";
-import InputField from "../../components/InputField/InputField";
+import SelectField from "../../components/InputField/SelectionField";
 
 export default function Audio_Animation() {
   const [openSection, setOpenSection] = useState("");
+  const data = [
+    { label: "Hindi", value: "1" },
+    { label: "English", value: "2" },
+    { label: "French", value: "3" }
+  ];
   return (
     <div className="p-8">
       <div className="bg-[#e9f5fc] border border-[#cfe6f4] rounded-xl py-5 px-10 space-y-5">
@@ -16,14 +21,39 @@ export default function Audio_Animation() {
 
         <div className=" flex flex-col space-y-7">
 
-          <GenerateScriptSection id="one" title="Audio Section" openSection={openSection} setOpenSection={setOpenSection}>
+          <GenerateScriptSection id="one" title="Audio Section" openSection={openSection} setOpenSection={setOpenSection} >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 px-3 py-4">
-              <InputField title="Narration" placeholder="Select Tool" />
-              <InputField title="Narration" placeholder="Select Voice" />
-              <InputField title="Alexa" placeholder="Select Tool" />
-              <InputField title="Alexa" placeholder="Select Voice" />
-              <InputField title="Alexa" placeholder="Select Tool" />
-              <InputField title="Alexa" placeholder="Select Voice" />
+              <SelectField
+                title="Narration"
+                placeholder="Select Tool"
+                options={data}
+              />
+              <SelectField
+                title=""
+                placeholder="Select Voice"
+                options={data}
+              />
+              <SelectField
+                title="Alexa"
+                placeholder="Select Tool"
+                options={data}
+              />
+              <SelectField
+                title=""
+                placeholder="Select Voice"
+                options={data}
+              />
+              <SelectField
+                title="Alexa"
+                placeholder="Select Tool"
+                options={data}
+              />
+
+              <SelectField
+                title=""
+                placeholder="Select Voice"
+                options={data}
+              />
             </div>
 
             <div className="flex justify-end mb-3 ml-2 px-3">
@@ -43,8 +73,8 @@ export default function Audio_Animation() {
           </GenerateScriptSection>
 
           <div className="flex justify-end  gap-8  py-4">
-              <button className="bg-[#239DE0] rounded px-7 py-2 text-white text-sm cursor-pointer hover:bg-blue-600">Generate Video</button>
-            </div>
+            <button className="bg-[#239DE0] rounded px-7 py-2 text-white text-sm cursor-pointer hover:bg-blue-600">Generate Video</button>
+          </div>
         </div>
       </div>
     </div>

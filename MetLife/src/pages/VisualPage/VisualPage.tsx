@@ -4,6 +4,9 @@ import recycle from "../../assets/images/recycle.png";
 import CommonTable from "../../components/CommonTable/CommonTable";
 import { useNavigate } from "react-router-dom";
 
+
+
+
 export default function VisualPage() {
   const [hasVisuals, setHasVisuals] = useState(false);
   const navigate =useNavigate();
@@ -70,7 +73,7 @@ export default function VisualPage() {
 
   return (
     <div className="p-8 space-y-6">
-      <h2 className="text-xl font-semibold text-gray-800">
+      <h2 className="text-2xl font-semibold text-[#333333]">
         Visual Content
       </h2>
 

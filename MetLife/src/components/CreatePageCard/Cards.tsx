@@ -27,7 +27,7 @@ export default function Cards({
         onClick={onClick}
         className="flex items-center gap-2 bg-[#239DE0] py-2 rounded text-white w-[70%] cursor-pointer hover:bg-blue-400"
       >
-        <img src={icon} className="w-5 h-4 ml-5" />
+        <img src={icon} className="w-5 h-4 ml-5 object-contain" />
         <span className="text-sm">{buttonText}</span>
       </button>
     </div>

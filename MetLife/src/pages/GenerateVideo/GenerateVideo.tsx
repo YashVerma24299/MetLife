@@ -7,16 +7,17 @@ import { useEffect } from 'react';
 export default function GenerateVideo() {
   const navigate = useNavigate();
   useEffect(() => {
-      document.title = "My Generate - Video Dashboard";
-    }, []);
+    document.title = "My Generate - Video Dashboard";
+  }, []);
 
   return (
     <div className="pt-16 flex flex-col items-center">
-
+      {/* heading */}
       <h1 className="text-4xl font-semibold text-gray-800">
         Generate Your Video
       </h1>
 
+      {/* Cards */}
       <div className="mt-10 flex flex-wrap justify-center gap-8 w-full px-6">
 
         <Cards

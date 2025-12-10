@@ -3,11 +3,12 @@ import DashboardLayout from "./layout/DashboardLayout";
 import HomePage from "./pages/HomePage/HomePage";
 import GenerateVideo from "./pages/GenerateVideo/GenerateVideo";
 import UploadScript from "./pages/Upload/UploadScript";
-import Default from "./pages/Default/Default";
+
 import GenerateScript from "./pages/GenerateScript/GenerateScript";
 import YourScript from "./pages/YourScript/YourScript";
 import VisualPage from "./pages/VisualPage/VisualPage";
-import Audio_Animation from "./pages/AudioAnimation/Audio&Animation";
+import Audio_Animation from "./pages/AudioAnimation/AudioAnimation";
+import Default from "./components/Default/Default";
 
 export default function App() {
   return (

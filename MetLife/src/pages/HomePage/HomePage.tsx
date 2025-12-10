@@ -10,21 +10,50 @@ import tableImage from "../../assets/images/tableImage.png";
 import CommonTable from "../../components/CommonTable/CommonTable";
 import { useEffect } from "react";
 
-// const title = ['Thumbnail', 'Video Name', 'Last Update', 'Duration', 'Status'];
-// const Data = [
-//     { id: '1', thumbnail: 'img', videoName: 'Travel Video', lastUpdate: 'Last Update', duration: '00 h : 25 m : 20 s', status: '12 Oct 2025', action:'' }
-// ]
-
-
 export default function HomePage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = "My Dashboardwasdfhj";
+    document.title = "My Dashboard";
   }, []);
 
+  const columns = [
+    "Thumbnail",
+    "Video Name",
+    "Duration",
+    "Last Update",
+    "Status",
+    "Action",
+  ];
+  const rows = [
+    [
+      <img src={tableImage} className="" />,
+      "Travel Video",
+      "00h : 25m : 20s",
+      "12 October 2025",
+      <Button text='Completed'  bg='bg-green-500'padding='px-2 py-1'/>,
+      <img src={eye} className="mx-3 cursor-pointer" onClick={()=> navigate('/dashboard/createvideo/generate/script')}/>,
+    ],
+    [
+      <img src={tableImage} className=" rounded-full" />,
+      "Travel Video",
+      "00h : 25m : 20s",
+      "12 October 2025",
+      <Button text='In Progress'  bg='bg-blue-500'padding='px-2 py-1'/>,
+      <img src={eye} className="mx-3 cursor-pointer" onClick={()=> navigate('/dashboard/createvideo/generate/script')}/>,
+    ],
+    [
+      <img src={tableImage} className="" />,
+      "Travel Video",
+      "00h : 25m : 20s",
+      "12 October 2025",
+      <Button text='Failed'  bg='bg-red-500'padding='px-6 py-1'/>,
+      <img src={eye} className="mx-3 cursor-pointer" onClick={()=> navigate('/dashboard/createvideo/generate/script')}/>,
+    ],
+  ];
+
   return (
-    <div className="space-y-5 ">
+    <div className="space-y-5 p-4">
 
       {/* Header */}
       <div className="flex flex-wrap justify-between gap-3">
@@ -41,7 +70,7 @@ export default function HomePage() {
           <StatisticsCard icon={video} num={24} desc="Total Videos" bg="#239DE01A" border='#239DE033' />
           <StatisticsCard icon={progress} num={50} desc="In Progress" bg="#99D53829" border='#99D53833' />
           <StatisticsCard icon={complete} num={35} desc="Completed" bg="#FB96781A" border='#FB967833' />
-          <StatisticsCard icon={error} num={20} desc="Failed/Error" bg="#AB8CE41A" border='#AB8CE433' />
+          <StatisticsCard icon={error} num={20} desc="Failed / Error" bg="#AB8CE41A" border='#AB8CE433' />
         </div>
       </div>
 
@@ -60,43 +89,3 @@ export default function HomePage() {
     </div>
   )
 }
-const columns = [
-  "Thumbnail",
-  "Video Name",
-  "Duration",
-  "Last Update",
-  "Status",
-  "Action",
-];
-const rows = [
-  [
-    <img src={tableImage} className="mx-auto" />,
-    "Travel Video",
-    "00h : 25m : 20s",
-    "12 October 2025",
-    <span className="bg-green-500 px-2 py-1 rounded text-white text-sm">
-      Completed
-    </span>,
-    <img src={eye} className="mx-auto" />,
-  ],
-  [
-    <img src={tableImage} className="mx-auto rounded-full" />,
-    "Travel Video",
-    "00h : 25m : 20s",
-    "12 October 2025",
-    <span className="bg-blue-500 px-2 py-1 rounded text-white text-sm">
-      In Progress
-    </span>,
-    <img src={eye} className="mx-auto" />,
-  ],
-  [
-    <img src={tableImage} className="mx-auto" />,
-    "Travel Video",
-    "00h : 25m : 20s",
-    "12 October 2025",
-    <span className="bg-red-500 px-6 py-1 rounded text-white text-sm">
-      Failed
-    </span>,
-    <img src={eye} className="mx-auto" />,
-  ],
-];
