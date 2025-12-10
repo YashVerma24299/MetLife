@@ -5,14 +5,14 @@ type Props = {
   id: string;
   title: string;
   openSection?: string;
-  setOpenSection?: (id:string) => void;
+  setOpenSection?: (id: string) => void;
   children?: any;
 };
 
 export default function GenerateScriptSection({ id, title, openSection, setOpenSection, children }: Props) {
   const open = openSection === id;
 
-  const sectionRef = useRef(null);
+  const sectionRef = useRef<any>(null);
 
   useEffect(() => {
     if (open && sectionRef.current) {
@@ -26,7 +26,7 @@ export default function GenerateScriptSection({ id, title, openSection, setOpenS
   useEffect(() => {
     function handleClickOutside(e: any) {
       if (open && sectionRef.current && !sectionRef.current.contains(e.target)) {
-        setOpenSection(null);
+        setOpenSection?.('');
       }
     }
 
@@ -37,7 +37,7 @@ export default function GenerateScriptSection({ id, title, openSection, setOpenS
 
   return (
     <div className="space-y-4" ref={sectionRef}>
-      <div className="bg-white rounded-lg p-3 cursor-pointer border border-[#DFDFDF]"  onClick={() => setOpenSection(!open ? id : '')}>
+      <div className="bg-white rounded-lg p-3 cursor-pointer border border-[#DFDFDF]"  onClick={() => setOpenSection?.(!open ? id : '')}>
         <div className={`flex justify-between items-center gap-2`} >
           <p className="text-md font-semibold text-[#231F20]">{title}</p>
           <div className="flex justify-center  px-2 py-1 rounded-sm">
