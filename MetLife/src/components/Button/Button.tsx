@@ -2,7 +2,7 @@ type buttonProps = {
   text: string,
   textColor?: string,
   onClick?: () => void,
-  active?: boolean,
+  active?: boolean, 
   activeColor?:string
   bg?: string,
   padding?: string,

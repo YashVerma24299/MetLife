@@ -1,21 +1,32 @@
 import Button from "../../components/Button/Button";
 import StatisticsCard from "../../components/StatisticsCard/StatisticsCard";
-import video from "../../assets/images/video.png";
-import progress from "../../assets/images/progress.png";
-import complete from "../../assets/images/complete.png";
-import error from "../../assets/images/error.png";
 import { useNavigate } from "react-router-dom";
 import eye from "../../assets/images/eye.png";
-import tableImage from "../../assets/images/tableImage.png";
 import CommonTable from "../../components/CommonTable/CommonTable";
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getDashboardData, setDashboardData } from "../../Redux/Slices/dashboardSlice";
 
 export default function HomePage() {
   const navigate = useNavigate();
+  const dispatch = useDispatch<any>();
+
+  const { statistics, videos } = useSelector((state: any) => state.dashboard)
 
   useEffect(() => {
     document.title = "My Dashboard";
+    fetchData();
   }, []);
+
+  const fetchData = async () => {
+    try {
+      const data = await getDashboardData();
+      console.log(data);
+      dispatch(setDashboardData(data));
+    } catch (error) {
+      console.log("API Error:", error);
+    }
+  };
 
   const columns = [
     "Thumbnail",
@@ -25,32 +36,31 @@ export default function HomePage() {
     "Status",
     "Action",
   ];
-  const rows = [
-    [
-      <img src={tableImage} className="" />,
-      "Travel Video",
-      "00h : 25m : 20s",
-      "12 October 2025",
-      <Button text='Completed'  bg='bg-green-500'padding='px-2 py-1'/>,
-      <img src={eye} className="mx-3 cursor-pointer" onClick={()=> navigate('/dashboard/createvideo/generate/script')}/>,
-    ],
-    [
-      <img src={tableImage} className=" rounded-full" />,
-      "Travel Video",
-      "00h : 25m : 20s",
-      "12 October 2025",
-      <Button text='In Progress'  bg='bg-blue-500'padding='px-2 py-1'/>,
-      <img src={eye} className="mx-3 cursor-pointer" onClick={()=> navigate('/dashboard/createvideo/generate/script')}/>,
-    ],
-    [
-      <img src={tableImage} className="" />,
-      "Travel Video",
-      "00h : 25m : 20s",
-      "12 October 2025",
-      <Button text='Failed'  bg='bg-red-500'padding='px-6 py-1'/>,
-      <img src={eye} className="mx-3 cursor-pointer" onClick={()=> navigate('/dashboard/createvideo/generate/script')}/>,
-    ],
-  ];
+  const rows = videos.map((v: any) => [
+    <img src={v.thumbnail} className="w-8 h-8 rounded-full" />,
+    v.name,
+    v.duration,
+    v.lastupdate,
+    <Button
+      text={v.status}
+      bg={
+        v.status === "Completed"
+          ? "bg-green-500 px-2 py-1"
+          : v.status === "In Progress"
+            ? "bg-blue-500 px-2 py-1"
+            : "bg-red-500 px-6 py-1"
+      }
+      padding=""
+    />,
+    <img
+      src={eye}
+      className="mx-3 cursor-pointer"
+      onClick={() =>
+        navigate("/dashboard/createvideo/generate/script")
+      }
+    />,
+  ]);
+
 
   return (
     <div className="space-y-5 p-4">
@@ -67,10 +77,11 @@ export default function HomePage() {
       <div className="bg-white p-6 rounded-lg">
         <h2 className="font-semibold text-gray-800 mb-4">Statistics</h2>
         <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          <StatisticsCard icon={video} num={24} desc="Total Videos" bg="#239DE01A" border='#239DE033' />
-          <StatisticsCard icon={progress} num={50} desc="In Progress" bg="#99D53829" border='#99D53833' />
-          <StatisticsCard icon={complete} num={35} desc="Completed" bg="#FB96781A" border='#FB967833' />
-          <StatisticsCard icon={error} num={20} desc="Failed / Error" bg="#AB8CE41A" border='#AB8CE433' />
+          {
+            statistics.map((item: any, ind: number) => (
+              <StatisticsCard key={ind} icon={item.img} num={item.value} title={item.title} />
+            ))
+          }
         </div>
       </div>
 
